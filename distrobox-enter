@@ -498,6 +498,9 @@ if [ "${container_status}" != "running" ]; then
 	printf >&2 "\nContainer Setup Complete!\n"
 fi
 
+# Unset the earlier exit trap, let the user command fail quietly.
+trap - EXIT
+
 # Generate the exec command and run it
 cmd="$(generate_command)"
 # shellcheck disable=SC2086
